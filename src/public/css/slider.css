@@ -10,7 +10,7 @@
     height: 800px;
     margin: auto auto;
     overflow: hidden;
-    position: absolute;
+    position: relative;
     /* -webkit-box-shadow: 0 0 88px 5px rgba(255, 255, 255, 0.75);
     -moz-box-shadow: 0 0 88px 5px rgba(255, 255, 255, 0.75); */
     /* box-shadow: 0 0 88px 5px rgba(255, 255, 255, 0.75); */
@@ -23,7 +23,7 @@ svg {
     height: 800px;
 }
 
-button {
+.buttonSlider {
     position: absolute;
     z-index: 50;
     width: 40px;
@@ -38,7 +38,7 @@ button {
     /* box-shadow: 0 0 88px 5px rgba(255, 255, 255, 0.75); */
 }
 
-button:focus {
+.buttonSlider:focus {
     outline-width: 0;
 }
 

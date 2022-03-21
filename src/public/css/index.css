@@ -1,5 +1,5 @@
 body {
-    font-family: 'Kaushan Script', cursive;
+    font-family: 'Dosis', sans-serif;
     margin: 0%;
 }
 
@@ -8,6 +8,7 @@ header {
 }
 
 header h1 {
+    font-family: 'Kaushan Script', cursive;
     margin: 0%;
 }
 
@@ -52,4 +53,156 @@ header li a {
 .esquina {
     border-top: 70px solid #ECB365;
     border-right: 70px solid #064663;
+}
+
+main {
+    background-color: #7696A5;
+}
+
+.contenedorTarjetas {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 5% 5% 1% 5%;
+}
+
+.tarjetaTitulo {
+    background-color: #ECB365;
+    width: 20%;
+    padding: 3% 3% 5% 3%;
+    box-shadow: #000 2px 3px 5px;
+    height: 400px;
+}
+
+.tarjetaTitulo h2 {
+    text-shadow: rgba(0, 0, 0, 0.418) 1px 1px 1px;
+    font-size: 35px;
+}
+
+.imgProducto {
+    width: 100%;
+}
+
+.tarjetaProducto {
+    background-color: #fff;
+    width: 20%;
+    box-shadow: rgba(0, 0, 0, 0.616) 2px 3px 10px;
+}
+
+.tarjetaDatos {
+    padding: 4%;
+    height: 12%;
+}
+
+.tarjetaDatos h3 {
+    width: 100%;
+    font-size: 25px;
+}
+
+.tarjetaDatos p {
+    font-size: 22px;
+}
+
+.tarjetaDatosPrecio {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contenedorBoton {
+    width: 100%;
+}
+
+.boton {
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4%;
+    margin: 10px 0px 10px 0px;
+    border: 0px;
+    box-shadow: rgba(0, 0, 0, 0.459) 2px 3px 10px;
+    border-radius: 17px;
+}
+
+.contenedorAnuncios {
+    padding: 1% 5% 5% 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.tarjetaAnuncio {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    width: 31%;
+    height: 400px;
+    box-shadow: rgba(0, 0, 0, 0.459) 2px 3px 10px;
+    padding: 2%;
+}
+
+.tarjetaAnuncio h3 {
+    font-size: 50px;
+    font-family: 'Kaushan Script', cursive;
+}
+
+.tarjetaAnuncio img {
+    width: 100%;
+}
+
+.flexColum {
+    display: flex;
+    flex-direction: column;
+}
+
+.tituloRegresoClase {
+    padding-left: 3%;
+    font-family: 'Kaushan Script', cursive;
+    margin-top: -20%;
+    color: #fff;
+    font-size: 220%;
+}
+
+.tarjetaRegresoClase {
+    background-color: #F9D302;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contenedorDatosAnuncio p {
+    font-size: 30px;
+    margin-bottom: 2%;
+}
+
+.BotonRegresoClase {
+    background-color: #000;
+    color: #fff;
+}
+
+.tarjetaTrajes {
+    font-family: 'Kaushan Script', cursive;
+    background-color: #000;
+    color: #fff;
+    justify-content: space-between;
+}
+
+.tarjetaTrajes img {
+    width: 100px;
+}
+
+.tarjetaGorra {
+    background-color: #fff;
+    justify-content: space-between;
+}
+
+.tarjetaGorra img {
+    width: 50%;
+}
+
+.botonAzul {
+    background-color: #064663;
+    color: #fff;
+}
+
+.fuenteBotonAnuncio {
+    font-size: 25px;
 }
