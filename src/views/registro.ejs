@@ -1,0 +1,55 @@
+<%- include('partials/_header.ejs') %>
+    <div class="contenedorCentrado">
+        <div class="contenedorPrincipalLogin">
+            <div class="loginIzq">
+                <form action="" method="post">
+                    <h2>Ingresa tus datos</h2>
+                    <div>
+                        <div class="parInputs">
+                            <div class="inputColumn" style="width: 45%;">
+                                <label for="nombreCliente">Nombre:</label>
+                                <input id="nombreCliente" name="nombreCliente" type="text" maxlength="15" minlength="2">
+                            </div>
+                            <div class="inputColumn" style="width: 45%;">
+                                <label for="Apellidos">Apellido:</label>
+                                <input id="Apellidos" name="Apellidos" type="text" maxlength="15" minlength="2">
+                            </div>
+                        </div>
+                        <div class="parInputs">
+                            <div class="inputColumn" style="width: 45%;">
+                                <label for="nombreCliente">Nombre:</label>
+                                <input id="nombreCliente" name="nombreCliente" type="text" maxlength="15" minlength="2">
+                            </div>
+                            <div class="inputColumn" style="width: 45%;">
+                                <label for="Apellidos">Apellido:</label>
+                                <input id="Apellidos" name="Apellidos" type="text" maxlength="15" minlength="2">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contenedorInputsColumn">
+                        <label>Correo:</label>
+                        <input class="cajaTexto" id="Correo" name="Correo" type="text" maxlength="15" minlength="2">
+                        <label>Contraseña:</label>
+                        <input id="Contraseña" name="Contraseña" type="text" maxlength="15" minlength="2">
+                    </div>
+                    <p class="mensajeError">Parece que hubo un problema al intentar registrarte</p>
+                    <button class="boton">
+                        Registrarse
+                    </button>
+                </form>
+            </div>
+            <div class="loginDer">
+                <div>
+                    <h2>Registro</h2>
+                    <p>Rellena el formulario con todos tus datos luego presiona el botón registrarse.</p>
+                </div>
+                <div>
+                    <p>¿Ya tienes una cuenta?</p>
+                    <button class="boton">
+                    Iniciar Sesion
+                </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('partials/_footer.ejs') %>
