@@ -1,0 +1,40 @@
+<%- include('partials/_headerSoloLogo.ejs') %>
+    <div class="contenedorCentrado imagenFondo">
+        <div class="contenedorPrincipalLogin" style="flex-direction: row-reverse;">
+            <div class="loginIzq" style=" height: 80%; width: 22%;">
+                <form action="" method="post">
+                    <h2>Ingresa tus datos</h2>
+                    <div>
+                    </div>
+                    <div class="contenedorInputsColumn">
+                        <label>Correo:</label>
+                        <input class="cajaTexto" id="Correo" name="Correo" type="text" maxlength="15" minlength="2">
+                        <label>Contraseña:</label>
+                        <input id="Contraseña" name="Contraseña" type="text" maxlength="15" minlength="2">
+                    </div>
+                    <p class="mensajeError">Parece que hubo un problema al intentar registrarte</p>
+                    <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                        <button class="boton">
+                            Olvide mi contraseña
+                        </button>
+                        <button class="boton">
+                            iniciar Sesion
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="loginDer" style="color:#fff; height: 80%; width: 22%;">
+                <div>
+                    <h2 style="text-shadow: #000 2px 3px 5px;">Bienvenido!</h2>
+                    <p style="font-weight: 200;">Ingresa a Usuario y contraseña para acceder a TheLocker</p>
+                </div>
+                <div>
+                    <p>Aun no tienes cuenta</p>
+                    <button class="boton">
+                    Registrate
+                </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('partials/_footer.ejs') %>

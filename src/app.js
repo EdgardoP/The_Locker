@@ -10,6 +10,7 @@ const myConnection = require('express-myconnection');
 const routerPrincipal = require('./routes/index');
 const routerUsuario = require('./routes/usuarios')
 const routerRegistro = require('./routes/registro')
+const routerLogin = require('./routes/login')
 
 //settings
 app.set('port', process.env.PORT || 3000);
@@ -32,6 +33,7 @@ app.use(myConnection(mysql, {
 app.use('/thelocker/index/', routerPrincipal);
 app.use('/thelocker/usuario/', routerUsuario);
 app.use('/thelocker/registro/', routerRegistro);
+app.use('/thelocker/login/', routerLogin);
 
 
 //archivos estaticos

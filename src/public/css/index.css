@@ -5,7 +5,14 @@ body {
 }
 
 header {
-    background-color: #064663;
+    background-color: var(--colorTres);
+}
+
+:root {
+    --colorUno: #041C32;
+    --colorDos: #04293A;
+    --colorTres: #064663;
+    --colorCuatro: #ECB365;
 }
 
 header h1 {
@@ -57,14 +64,14 @@ header li a {
 
 .Logo {
     width: 100%;
-    background-color: #ECB365;
+    background-color: var(--colorCuatro);
     text-shadow: rgba(0, 0, 0, 0.597) 2px 2px 1px;
     justify-content: end;
 }
 
 .esquina {
-    border-top: 70px solid #ECB365;
-    border-right: 70px solid #064663;
+    border-top: 70px solid var(--colorCuatro);
+    border-right: 70px solid var(--colorTres);
 }
 
 .mainColor {
@@ -86,7 +93,7 @@ header li a {
 }
 
 .tarjetaTitulo {
-    background-color: #ECB365;
+    background-color: var(--colorCuatro);
     width: 20%;
     padding: 3% 3% 3% 3%;
     box-shadow: #000 2px 3px 5px;
@@ -225,7 +232,7 @@ header li a {
 }
 
 .botonAzul {
-    background-color: #064663;
+    background-color: var(--colorTres);
     color: #fff;
 }
 
@@ -238,7 +245,7 @@ header li a {
 }
 
 .barraAzul {
-    background-color: #064663;
+    background-color: var(--colorTres);
     height: 5%;
     text-align: center;
     padding: 2%;
@@ -273,8 +280,12 @@ header li a {
 .contenedorCentrado {
     display: flex;
     flex-direction: column;
-    height: 690px;
+    height: 900px;
     justify-content: center;
+}
+
+.imagenFondo {
+    background-image: url('/img/fondo.bmp');
 }
 
 .contenedorPrincipalLogin {
@@ -289,7 +300,7 @@ header li a {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    background-color: #064663;
+    background-color: var(--colorTres);
     color: white;
     padding: 3% 5% 3% 5%;
     border-radius: 10px;
@@ -332,7 +343,7 @@ input:focus {
 }
 
 .loginDer {
-    background-color: #ECB365;
+    background-color: var(--colorCuatro);
     color: #000;
     padding: 3% 5% 3% 5%;
     border-radius: 17px;
