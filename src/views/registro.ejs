@@ -2,38 +2,44 @@
     <div class="contenedorCentrado imagenFondo">
         <div class="contenedorPrincipalLogin">
             <div class="loginIzq">
-                <form action="" method="post">
+                <form action="/thelocker/usuario/guardarCliente" method="post">
                     <h2>Ingresa tus datos</h2>
                     <div>
                         <div class="parInputs">
                             <div class="inputColumn" style="width: 45%;">
-                                <label for="nombreCliente">Nombre:</label>
-                                <input id="nombreCliente" name="nombreCliente" type="text" maxlength="15" minlength="2">
+                                <label for="nombreUsuario">Nombre:</label>
+                                <input id="nombreUsuario" name="nombreUsuario" type="text" maxlength="15" minlength="2">
                             </div>
                             <div class="inputColumn" style="width: 45%;">
-                                <label for="Apellidos">Apellido:</label>
-                                <input id="Apellidos" name="Apellidos" type="text" maxlength="15" minlength="2">
+                                <label for="apellidoUsuario">Apellido:</label>
+                                <input id="apellidoUsuario" name="apellidoUsuario" type="text" maxlength="15" minlength="2">
                             </div>
                         </div>
                         <div class="parInputs">
                             <div class="inputColumn" style="width: 45%;">
-                                <label for="nombreCliente">Nombre:</label>
-                                <input id="nombreCliente" name="nombreCliente" type="text" maxlength="15" minlength="2">
+                                <label for="edadUsuario">Edad:</label>
+                                <input id="edadUsuario" name="edadUsuario" type="text" maxlength="15" minlength="2">
                             </div>
+                            
                             <div class="inputColumn" style="width: 45%;">
-                                <label for="Apellidos">Apellido:</label>
-                                <input id="Apellidos" name="Apellidos" type="text" maxlength="15" minlength="2">
+                                <label for="sexoUsuario">Sexo:</label>
+                                <select name="sexoUsuario" id="sexoUsuario">
+                                    <option value="M">Seleccione:</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Femenino</option>
+                                </select>
                             </div>
+
                         </div>
                     </div>
                     <div class="contenedorInputsColumn">
-                        <label>Correo:</label>
-                        <input class="cajaTexto" id="Correo" name="Correo" type="text" maxlength="15" minlength="2">
+                        <label>Email:</label>
+                        <input class="cajaTexto" id="emailUsuario" name="emailUsuario" type="text" maxlength="50" minlength="2">
                         <label>Contraseña:</label>
-                        <input id="Contraseña" name="Contraseña" type="text" maxlength="15" minlength="2">
+                        <input id="password" name="password" type="text" maxlength="15" minlength="2">
                     </div>
                     <p class="mensajeError">Parece que hubo un problema al intentar registrarte</p>
-                    <button class="boton">
+                    <button class="boton" type="submit">
                         Registrarse
                     </button>
                 </form>
@@ -52,4 +58,4 @@
             </div>
         </div>
     </div>
-    <%- include('partials/_footer.ejs') %>
+<%- include('partials/_footer.ejs') %>

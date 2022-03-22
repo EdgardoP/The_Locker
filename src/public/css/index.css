@@ -318,6 +318,20 @@ input {
     width: 100%;
 }
 
+select {
+    border: 0px none;
+    padding: 8px;
+    margin-bottom: 3%;
+    background-color: #EFEFF1;
+    color: rgb(49, 48, 48);
+    border-radius: 5px;
+    width: 100%;
+}
+
+select:focus {
+    outline: none;
+}
+
 input:focus {
     outline: none;
 }
