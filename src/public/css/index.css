@@ -280,7 +280,7 @@ header li a {
 .contenedorCentrado {
     display: flex;
     flex-direction: column;
-    height: 900px;
+    height: 550px;
     justify-content: center;
 }
 
