@@ -33,8 +33,7 @@ app.use(myConnection(mysql, {
 app.use('/thelocker/index/', routerPrincipal);
 app.use('/thelocker/usuario/', routerUsuario);
 app.use('/thelocker/registro/', routerRegistro);
-app.use('/thelocker/login/', routerLogin);
-
+app.use('/thelocker/login', routerLogin);
 
 //archivos estaticos
 app.use(express.static(path.join(__dirname, 'public')))

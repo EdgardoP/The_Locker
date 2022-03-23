@@ -2,15 +2,15 @@
     <div class="contenedorCentrado imagenFondo">
         <div class="contenedorPrincipalLogin" style="flex-direction: row-reverse;">
             <div class="loginIzq" style=" height: 80%; width: 24%;">
-                <form action="" method="post">
+                <form action="/thelocker/login/verificarUsuario" method="post">
                     <h2>Ingresa tus datos</h2>
                     <div>
                     </div>
                     <div class="contenedorInputsColumn">
-                        <label>Correo:</label>
-                        <input class="cajaTexto" id="Correo" name="Correo" type="text" maxlength="15" minlength="2">
+                        <label>Email:</label>
+                        <input class="cajaTexto" id="emailUsuario" name="emailUsuario" type="text" maxlength="50" minlength="2">
                         <label>Contraseña:</label>
-                        <input id="Contraseña" name="Contraseña" type="text" maxlength="15" minlength="2">
+                        <input id="password" name="password" type="text" maxlength="50" minlength="2">
                     </div>
                     <p class="mensajeError">Parece que hubo un problema al intentar registrarte</p>
                     <div style="display: flex; flex-direction: row; justify-content: space-between;">
@@ -23,18 +23,18 @@
                     </div>
                 </form>
             </div>
-            <div class="loginDer" style="color:#fff; height: 80%; width: 24%;">
+            <div class="loginDer" style="color:#000; height: 80%; width: 24%;  margin-right: -3%;">
                 <div>
-                    <h2 style="text-shadow: #000 2px 3px 5px;">Bienvenido!</h2>
+                    <h2 style="text-shadow: #fff 2px 3px 5px;">Bienvenido!</h2>
                     <p style="font-weight: 200;">Ingresa a Usuario y contraseña para acceder a TheLocker</p>
                 </div>
                 <div>
-                    <p>Aun no tienes cuenta</p>
-                    <button class="boton">
+                    <p style="font-weight: 100;">Aun no tienes cuenta</p>
+                    <button class="boton" type="submit">
                     Registrate
                 </button>
                 </div>
             </div>
         </div>
     </div>
-    <%- include('partials/_footer.ejs') %>
+<%- include('partials/_footer.ejs') %>
