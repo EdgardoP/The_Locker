@@ -16,11 +16,6 @@ controller.guardarCliente = (req, res) => {
         tipoUsuario: 3
     }
     const agg = Object.assign(data, idTipo)
-        // console.log(agg);
-        // if (typeof localStorage === "undefined" || localStorage === null) {
-        //     var LocalStorage = require('node-localstorage').LocalStorage;
-        //     localStorage = new LocalStorage('/TheLocker');
-        // }
     const { nombreUsuario, apellidoUsuario, edadUsuario, sexoUsuario, emailUsuario, password } = req.body;
     if (!nombreUsuario || !apellidoUsuario || !edadUsuario || !sexoUsuario || !emailUsuario || !password) {
         res.send('Debes ingresar todos los datos');
@@ -31,7 +26,7 @@ controller.guardarCliente = (req, res) => {
                     res.redirect('/thelocker/login');
                 } else {
                     console.log(err);
-                    res.render('"Ocurrio un error al ingresar los datos."')
+                    res.send('Ocurrio un error al ingresar los datos.')
                 }
             })
         })
@@ -42,7 +37,7 @@ controller.guardar = (req, res) => {
     console.log(req.body);
     const { idUsuario, nombreUsuario, apellidoUsuario, edadUsuario, sexoUsuario, emailUsuario, password, tipoUsuario } = req.body;
     if (!idUsuario || !nombreUsuario || !apellidoUsuario || !edadUsuario || !sexoUsuario || !emailUsuario || !password || !tipoUsuario) {
-        res.send('Datos ingresar todos los datos');
+        res.send('Debes ingresar todos los datos');
     } else {
         req.getConnection((err, conn) => {
             conn.query('INSERT INTO usuario set ?', [data], (err, usuario) => {

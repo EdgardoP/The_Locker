@@ -1,0 +1,50 @@
+<%- include('partials/_header.ejs') %>
+    <% if (data.length > 0 ) { %>
+        <%= console.log(data.length) %> 
+        <div class="contenedorGeneralCategoriasNV flexRow">
+            <div class="contenedorListaCarrito">
+                <%- include('partials/_slideBar.ejs') %>
+            </div>
+                <div class="contenedorTarjetasCategorias flexRow">
+                    <% for( let index = 0; index < data.length; index++ ) { %>
+                        <div class="tarjetaProductoCategorias flexColum">
+                            <img src=" <%= data[index].imagenProducto %>  " alt="" srcset="">
+                            <div class="flexColum tarjetaDatosCategorias">
+                                <h3> <%= data[index].nombreProducto %>  </h3>
+                                <p> <%= data[index].descripcionProducto %>  </p>
+                                <div class="flexRow preciosTarjetaCategorias">
+                                    <div class="flexRow">
+                                        <p>Talla --- </p>
+                                        <p> <%= data[index].tallaProducto %>  </p>
+                                    </div>
+                                    <div class="flexRow">
+                                        <p>Stock --- </p>
+                                        <p> <%= data[index].cantProducto %>  </p>
+                                    </div>
+                                </div>
+                                <div class="flexRow preciosTarjetaCategorias">
+                                    <p>Precio:</p>
+                                    <P>L <%= data[index].precioProducto %>  </P>
+                                </div>
+                                <div>
+                                    <button class="botonTarjeta flexRow botonAzul">
+                                        <p> Agregar a Carrito</p>
+                                        <span class="material-icons ">
+                                            shopping_cart
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+            <% } else { %>
+                <div class="contenedorGeneralCategoriasV flexRow">
+                    <div class="mensajeCatalogoVacio">
+                        <h2>Ops! Parece que aun no hay articulos para agregar a tu carrito.</h2>
+                    </div>
+                </div>
+            <% } %>
+            
+        </div>
+    </div>
+<%- include('partials/_footer.ejs') %>

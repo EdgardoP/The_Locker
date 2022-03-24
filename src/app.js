@@ -8,9 +8,10 @@ const myConnection = require('express-myconnection');
 
 //importar rutas
 const routerPrincipal = require('./routes/index');
-const routerUsuario = require('./routes/usuarios')
-const routerRegistro = require('./routes/registro')
-const routerLogin = require('./routes/login')
+const routerUsuario = require('./routes/usuarios');
+const routerRegistro = require('./routes/registro');
+const routerLogin = require('./routes/login');
+const routerProducto = require('./routes/productos');
 
 //settings
 app.set('port', process.env.PORT || 3000);
@@ -34,8 +35,8 @@ app.use('/thelocker/index/', routerPrincipal);
 app.use('/thelocker/usuario/', routerUsuario);
 app.use('/thelocker/registro/', routerRegistro);
 app.use('/thelocker/login', routerLogin);
-
-//archivos estaticos
+app.use('/thelocker/producto/', routerProducto)
+    //archivos estaticos
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.listen(app.get('port'), () => {
