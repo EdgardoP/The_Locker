@@ -2,7 +2,7 @@
     <% if (data.length > 0 ) { %>
         <%= console.log(data.length) %> 
         <div class="contenedorGeneralCategoriasNV flexRow">
-            <div class="contenedorListaCarrito">
+            <div>
                 <%- include('partials/_slideBar.ejs') %>
             </div>
                 <div class="contenedorTarjetasCategorias flexRow">
@@ -11,32 +11,34 @@
                             <img src=" <%= data[index].imagenProducto %>  " alt="" srcset="">
                             <div class="flexColum tarjetaDatosCategorias">
                                 <h3> <%= data[index].nombreProducto %>  </h3>
-                                <p> <%= data[index].descripcionProducto %>  </p>
                                 <div class="flexRow preciosTarjetaCategorias">
-                                    <div class="flexRow">
-                                        <p>Talla --- </p>
+                                    <div class="flexRow" >
+                                        <p>Talla -   </p>
                                         <p> <%= data[index].tallaProducto %>  </p>
-                                    </div>
-                                    <div class="flexRow">
-                                        <p>Stock --- </p>
-                                        <p> <%= data[index].cantProducto %>  </p>
                                     </div>
                                 </div>
                                 <div class="flexRow preciosTarjetaCategorias">
                                     <p>Precio:</p>
                                     <P>L <%= data[index].precioProducto %>  </P>
                                 </div>
-                                <div>
-                                    <button class="botonTarjeta flexRow botonAzul">
-                                        <p> Agregar a Carrito</p>
-                                        <span class="material-icons ">
-                                            shopping_cart
-                                        </span>
-                                    </button>
-                                </div>
+                                <form action="/thelocker/carrito/aggCarrito/ <%= data[index].idProducto %> " method="post">
+                                    <div class="flexRow preciosTarjetaCategorias">
+                                        <p>Ingresa una cantidad:</p>
+                                        <input placeholder="0" type="number" id="cantidadProducto" name="cantidadProducto"min="1" max="20" class="numberTarjetaCategoria">
+                                    </div>
+                                    <div>
+                                        <button class="botonTarjeta flexRow botonAzul">
+                                            <p> Agregar a Carrito </p>
+                                            <span class="material-icons ">
+                                                shopping_cart
+                                            </span>
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     <% } %>
+                </div>
             <% } else { %>
                 <div class="contenedorGeneralCategoriasV flexRow">
                     <div class="mensajeCatalogoVacio">

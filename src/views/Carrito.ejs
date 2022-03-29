@@ -1,0 +1,126 @@
+<%- include('partials/_header.ejs') %>
+<% let acumulador = 0 %> 
+<% let sumCantidades = 0 %> 
+<% let fkIdCarrito = [] %> 
+<% if (data.length > 0) { %>
+    <div class="imagenFondo contenedorGeneralCarrito flexRow">
+        <div class="contenedorListaCarrito">
+            <% for( let index = 0; index < data.length; index++ ) { %>
+                <div class="flexRow tarjetaListaCarrito">
+                    <img src=" <%= data[index].imagenProducto %>  " alt="" srcset="">
+                    <div class="datosTarjetaListaCarrito flexColum">
+                        <div class="tituloTarjetaListaCarrito flexRow">
+                            <h2> <%= data[index].nombreProducto %>  </h2>
+                            <div class="flexRow">
+                                <P>Cant: x</P>
+                                <p> <%= data[index].cantidadProducto %>  </p>
+                            </div>
+                        </div>
+                        <div>
+                            <p> <%= data[index].descripcionProducto %>  </p>
+                            <p>Talla: <%= data[index].tallaProducto %>  </p>
+                            <p>Clasificacion: <%= data[index].clasificacionProducto %> </p>
+                            <div class="flexRow tituloTarjetaListaCarrito">
+                                <p>Precio: <%= data[index].precioProducto %> </p>
+                                <% let resultado = data[index].precioProducto * data[index].cantidadProducto %> 
+                                <% sumCantidades += data[index].cantidadProducto %> 
+                                <% acumulador += resultado %> 
+                                <button class="botonCarrito">
+                                    Eliminar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+                <% fkIdCarrito.push(data[index].idCarrito) %> 
+            <% } %>
+            <% console.log(fkIdCarrito) %>
+        </div>
+        <div class="contenedorFacturacion">
+            <h2>Facturacion</h2>
+            <div>
+                <div class="flexRow etiquetasFacturacion">
+                    <p>Cantidad de productos:</p>
+                    <p> <%= sumCantidades %>  </p>
+                </div>
+                <div class="flexRow etiquetasFacturacion">
+                    <p>Total a Pagar:</p>
+                    <p>L. <%= acumulador %>  </p>
+                </div>
+            </div>
+            <div class="contenedorBotonFacturacion">
+                <button class="botonTarjeta botonAzul" id="btnProcederPago">Proceder a Pagar</button>
+            </div>
+        </div>
+    </div>
+<% } %>
+    <div id="myModalCarrito" class="modalCarrito">
+        <div class="modalCarrito-contenido">
+                <div class="modalCarrito-header">
+                    <span class="close">&times;</span>
+                    <h2>Facturacion del Pago</h2>
+                </div>
+            <div class="modalCarrito-body flexRow">
+                <div class="modalCarritoIzq">
+                    <div class="modalTarjetasCredito flexColum">
+                        <form action="/thelocker/carrito/ejecutarPago/<%= fkIdCarrito %> " method="post" class="flexColum">
+                            <label for="nombreCompleto">Nombre Completo</label>
+                            <input type="text" name="nombreCompleto" id="nombreCompleto">
+                            <label for="direcEnvio">Direccion de Envio</label>
+                            <input type="text" name="direcEnvio" id="direcEnvio">
+                            <label for="tarjetasCredito">Elije tu tarjeta</label>
+                            <select name="nombreTarjeta" id="nombreTarjeta">
+                                <option value="MasterCard">MasterCard</option>
+                                <option value="Visa">Visa</option>
+                                <option value="American Express">American Express</option>
+                                <option value="Diners Club">Diners Club</option>
+                            </select>
+                            <label for="numeroTarjeta">Numero de Tarjeta</label>
+                            <input type="text" name="noTarjeta" id="NoTarjeta">
+                            <p>Fecha de Expiracion</p>
+                            <div class="flexRow">
+                                <select name="Mes" id="Mes" style="width: 30%; margin-right: 20px;">
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="12">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                                <select name="Año" id="Año" style="width: 30%;">
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2026">2026</option>
+                                    <option value="2027">2027</option>
+                                    <option value="2028">2028</option>
+                                    <option value="2029">2029</option>
+                                </select>
+                            </div>
+                            <label for="codigoSeguridad">Codigo de Seguridad</label>
+                            <input type="text" name="codigoSeguridad" id="codigoSeguridad" style="width: 40px;">
+                            <button class="botonCarrito botonAzul" type="submit">Proceder a Pago</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="modalCarritoDer">
+                    <div class="modalCarritoLogo">
+                        <img src="/img/logoNegro.png" alt="TheLocker" srcset="" >
+                        <h3 style="  font-family: 'Kaushan Script', cursive; font-size: 30px;">The Locker</h3>
+                    </div>
+                </div>
+            </div>    
+            <div class="modalCarrito-footer">
+                <h3></h3>
+            </div>
+        </div>
+  </div>
+  <script src="/scripts/index.js"></script>
+<%- include('partials/_footer.ejs') %>

@@ -1,4 +1,7 @@
 const controller = {}
+var LocalStorage = require('node-localstorage').LocalStorage;
+localStorage = new LocalStorage('/TheLocker');
+
 
 controller.paginaLogin = (req, res) => {
     res.render('login')
@@ -26,4 +29,8 @@ controller.verificarLogin = (req, res) => {
     })
 }
 
+controller.cerrarSesion = (req, res) => {
+    localStorage.clear();
+    res.redirect('/thelocker/login/')
+}
 module.exports = controller;
