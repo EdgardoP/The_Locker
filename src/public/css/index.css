@@ -724,8 +724,17 @@ input:focus {
     width: 35%;
     text-align: center;
     margin-top: 8%;
-    font-size: 30px;
+    font-size: 160%;
     padding: 2%;
     border-radius: 40px;
     box-shadow: rgba(0, 0, 0, 0.432) 3px 5px 10px;
+}
+
+.contenedorModuloEmpleado {
+    height: 700px;
+}
+
+.contenedorMenuSlider {
+    width: 15%;
+    height: 100%;
 }

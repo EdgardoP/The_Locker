@@ -1,8 +1,10 @@
 <%- include('partials/_headerMenuEmpleado') %>
-<div class="contenedorGeneralCategoriasV flexRow">
-    <div class="panelInicioEmpleado">
-        <h2>Bienvenido  <%= localStorage.getItem('nombreUsuario') %> </h2>
-        <h2>Cargo: Admin </h2>
+    <div class="imagenFondo contenedorModuloEmpleado">
+        <div class="contenedorMenuSlider">
+            <%- include('partials/_slideBarMenu') %>
+        </div>
+        <div class="contenedorContenidoModuloEmpleado"> 
+            
+        </div>
     </div>
-</div>
 <%- include('partials/_footer') %>
