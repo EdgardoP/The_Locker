@@ -23,6 +23,8 @@ controller.verificarLogin = (req, res) => {
                 localStorage.setItem('nombreUsuario', usuario[0].nombreUsuario)
                 if (usuario[0].tipoUsuario === 3) {
                     res.redirect('/thelocker/index')
+                } else if (usuario[0].tipoUsuario === 1) {
+                    res.redirect('/thelocker/dashboard')
                 }
             }
         })
@@ -33,4 +35,5 @@ controller.cerrarSesion = (req, res) => {
     localStorage.clear();
     res.redirect('/thelocker/login/')
 }
+
 module.exports = controller;

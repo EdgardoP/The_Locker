@@ -717,3 +717,15 @@ input:focus {
     background-color: var(--colorTres);
     color: white;
 }
+
+.panelInicioEmpleado {
+    background-color: var(--colorTres);
+    height: 30%;
+    width: 35%;
+    text-align: center;
+    margin-top: 8%;
+    font-size: 30px;
+    padding: 2%;
+    border-radius: 40px;
+    box-shadow: rgba(0, 0, 0, 0.432) 3px 5px 10px;
+}

@@ -32,7 +32,7 @@ app.use(myConnection(mysql, {
 
 
 //routes
-app.use('/thelocker/index/', routerPrincipal);
+app.use('/thelocker/', routerPrincipal);
 app.use('/thelocker/usuario/', routerUsuario);
 app.use('/thelocker/registro/', routerRegistro);
 app.use('/thelocker/login', routerLogin);
