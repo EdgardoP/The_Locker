@@ -2,29 +2,29 @@
     <div class="contenedorCentrado imagenFondo">
         <div class="contenedorPrincipalLogin">
             <div class="loginIzq">
-                <form action="/thelocker/usuario/guardarCliente" method="post">
+                <form action="/thelocker/usuario/guardarCliente" name="registroF" method="post">
                     <h2>Ingresa tus datos</h2>
                     <div>
                         <div class="parInputs">
                             <div class="inputColumn" style="width: 45%;">
                                 <label for="nombreUsuario">Nombre:</label>
-                                <input id="nombreUsuario" name="nombreUsuario" type="text" maxlength="15" minlength="2">
+                                <input id="nombreUsuario" name="nombreUsuario" type="text">
                             </div>
                             <div class="inputColumn" style="width: 45%;">
                                 <label for="apellidoUsuario">Apellido:</label>
-                                <input id="apellidoUsuario" name="apellidoUsuario" type="text" maxlength="15" minlength="2">
+                                <input id="apellidoUsuario" name="apellidoUsuario" type="text">
                             </div>
                         </div>
                         <div class="parInputs">
                             <div class="inputColumn" style="width: 45%;">
                                 <label for="edadUsuario">Edad:</label>
-                                <input id="edadUsuario" name="edadUsuario" type="text" maxlength="15" minlength="2">
+                                <input id="edadUsuario" name="edadUsuario" type="text">
                             </div>
-                            
+
                             <div class="inputColumn" style="width: 45%;">
                                 <label for="sexoUsuario">Sexo:</label>
                                 <select name="sexoUsuario" id="sexoUsuario">
-                                    <option value="M">Seleccione:</option>
+                                    <option selected value="0">Seleccione:</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Femenino</option>
                                 </select>
@@ -39,7 +39,7 @@
                         <input id="password" name="password" type="text" maxlength="15" minlength="2">
                     </div>
                     <p class="mensajeError">Parece que hubo un problema al intentar registrarte</p>
-                    <button class="boton" type="submit">
+                    <button class="boton" type="submit" onclick="validarFormulario()">
                         Registrarse
                     </button>
                 </form>
@@ -57,5 +57,6 @@
                 </div>
             </div>
         </div>
+        <script src="/scripts/validaciones.js"></script>
     </div>
-<%- include('partials/_footer.ejs') %>
+    <%- include('partials/_footer.ejs') %>
