@@ -3,8 +3,17 @@
         <div class="contenedorMenuSlider">
             <%- include('partials/_slideBarMenu') %>
         </div>
-        <div class="contenedorContenidoModuloEmpleado"> 
-            
+        <div class="contenedorContenidoModuloEmpleado">
+            <div style="display: flex; justify-content: center;">
+                <div class="tituloModuloEmpleado">
+                    <p>Bienvenido:
+                        <%= localStorage.getItem('correoUsuario') %>
+                    </p>
+                    <p>
+                        Cargo: Administrador
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 <%- include('partials/_footer') %>

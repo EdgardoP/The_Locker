@@ -6,8 +6,5 @@ const controller = {}
 controller.paginaPrincipal = (req, res) => {
     res.render('index');
 }
-controller.menuEmpleados = (req, res) => {
-    res.render('menuEmpleados')
-}
 
 module.exports = controller;

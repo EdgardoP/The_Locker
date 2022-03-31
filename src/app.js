@@ -13,8 +13,8 @@ const routerRegistro = require('./routes/registro');
 const routerLogin = require('./routes/login');
 const routerProducto = require('./routes/productos');
 const routerCarrito = require('./routes/carrito');
-
-//settings
+const routerDashboard = require('./routes/dashboard')
+    //settings
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'))
@@ -38,6 +38,7 @@ app.use('/thelocker/registro/', routerRegistro);
 app.use('/thelocker/login', routerLogin);
 app.use('/thelocker/producto/', routerProducto);
 app.use('/thelocker/carrito/', routerCarrito);
+app.use('/thelocker/dashboard/', routerDashboard);
 //archivos estaticos
 app.use(express.static(path.join(__dirname, 'public')))
 

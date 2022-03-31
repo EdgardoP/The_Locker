@@ -731,10 +731,163 @@ input:focus {
 }
 
 .contenedorModuloEmpleado {
-    height: 700px;
+    display: flex;
+    flex-direction: row;
+}
+
+.contenedorContenidoModuloEmpleado {
+    width: 100%;
+}
+
+.tituloModuloEmpleado {
+    background-color: var(--colorTres);
+    width: 40%;
+    color: #fff;
+    font-size: 200%;
+    padding: 2%;
+    margin-top: 15%;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.623) 4px 5px 10px;
+    font-weight: 400;
+}
+
+.tituloModuloEmpleado p {
+    margin-bottom: 10%;
 }
 
 .contenedorMenuSlider {
     width: 15%;
     height: 100%;
+}
+
+.encabezadoControl {
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    width: 93%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    margin-top: 10px;
+    color: var(--colorTres);
+    box-shadow: rgba(0, 0, 0, 0.637) 2px 3px 10px;
+}
+
+.encabezadoControl p {
+    font-weight: 600;
+}
+
+.encabezadoControl h3 {
+    font-size: 150%;
+}
+
+.botonReporte {
+    font-family: 'Dosis', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    width: 150px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.329) 2px 3px 10px;
+    margin: 3px;
+    color: #fff;
+}
+
+.botonVerde {
+    background-color: #2D791E;
+}
+
+.separadorTablasControles {
+    background-color: var(--colorTres);
+    width: 93%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 10px;
+    color: #fff;
+    padding: 8px;
+}
+
+.contenedorCrud {
+    width: 93%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tabla {
+    padding: 10px;
+}
+
+.contenedorTabla {
+    background-color: #fff;
+    width: 75%;
+    text-align: left;
+    margin-bottom: 100px;
+}
+
+.contenedorTabla td {
+    width: 10%;
+    padding-bottom: 10px;
+    font-size: 18px;
+    background-color: rgba(136, 136, 136, 0.068);
+}
+
+.contenedorTabla th {
+    border-bottom: rgba(0, 0, 0, 0.267) 1px solid;
+    padding-bottom: 8px;
+}
+
+.contenedorPanelBotones {
+    background-color: var(--colorTres);
+    width: 22%;
+    padding: 30px 10px 10px 10px;
+    font-size: 18px;
+    color: #fff;
+    height: 500px;
+}
+
+.contenedorPanelBotones input {
+    width: 75%;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.contenedorPanelBotones select {
+    width: 75%;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.inputCRUD {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.botonCRUDCorto {
+    width: 98%;
+    padding: 4px 0px 4px 0px;
+    margin: 2% 1% 2% 1%;
+    font-family: 'Dosis', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 7px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.493) 2px 3px 10px;
+}
+
+.contenedorBotonesCRUD {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.botonesCRUD {
+    width: 75%;
 }
