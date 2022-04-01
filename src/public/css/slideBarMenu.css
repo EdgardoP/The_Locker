@@ -46,7 +46,7 @@ body {
 }
 
 .l-navbar {
-    position: relative;
+    position: fixed;
     left: 0;
     top: 0;
     background-color: var(--second-color);
@@ -148,7 +148,7 @@ body {
 }
 
 .show {
-    width: 94%;
+    width: 12%;
 }
 
 .icon {

@@ -1,0 +1,106 @@
+<%- include('partials/_headerMenuEmpleado') %>
+    <div class="imagenFondo contenedorModuloEmpleado">
+        <div class="contenedorMenuSlider">
+            <%- include('partials/_slideBarMenu') %>
+        </div>
+        <div class="contenedorContenidoModuloEmpleado">
+            <div class="encabezadoControl">
+                <h3>
+                    Control Catalogo
+                </h3>
+                <div class="flexRow" style="align-items: baseline;">
+                    <p style="margin-right: 8px;">Generar reporte:</p>
+                    <div class="flexColum">
+                        <select name="reporte" id="reporte">
+                            <option value="0">Seleccion</option>
+                        </select>
+                        <button class="botonReporte botonVerde">
+                            Generar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="separadorTablasControles">
+                <p></p>
+                <p style="margin-left: 50%" ;>Ingresar</p>
+            </div>
+            <div class="contenedorCrud">
+                <div class="contenedorTarjetasControl">
+                <% if (data) { %>
+                    <% console.log(data); %> 
+                    <% for( let index = 0; index < data.length; index++ ) { %>
+                        <% if (data[index].estadoCatalogo == 'Visible') { %>
+                            <div class="tarjetaCRUD visible">
+                        <% } %>
+                        <% if (data[index].estadoCatalogo == 'Oculto') { %>
+                            <div class="tarjetaCRUD oculto">
+                        <% } %>
+                            <img src= <%= data[index].imagenProducto %>  alt="">
+                            <div class="TarjetaCRUDContenido">
+                                <div class="inputCRUD">
+                                    <p>Id:</p>
+                                    <p><%= data[index].idProducto %></p>
+                                </div>
+                                <div class="inputCRUD">
+                                    <p>Nombre:</p>
+                                    <p><%= data[index].nombreProducto %></p>
+                                </div>
+                                <div class="inputCRUD">
+                                    <p>Cantidad:</p>
+                                    <p> <%= data[index].cantProducto %> </p>
+                                </div>
+                                <div class="inputCRUD">
+                                    <p>Estado:</p>
+                                    <p> <%= data[index].estadoCatalogo %>  </p>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                <% } %>
+                </div>
+                <div class="contenedorPanelBotones">
+                    <div class="inputCRUD">
+                        <label for="idUsuario">Id:</label>
+                        <input type="text" name="idUsuario" id="idUsuario">
+                    </div>
+                    <div class="inputCRUD">
+                        <label for="Nombre">Nombre</label>
+                        <input type="text" name="nombreUsuario" id="nombreUsuario">
+                    </div>
+                    <div class="inputCRUD">
+                        <label for="apellidoUsuario">Apellido</label>
+                        <input type="text" name="apellidoUsuario" id="apellidoUsuario">
+                    </div>
+                    <div class="inputCRUD">
+                        <label for="mostrarTipoUsuario">Mostrar</label>
+                        <select name="mostrarTipoUsuario" id="mostrarTipoUsuario">
+                            <option value="0">Seleccione</option>
+                            <option value="1">Administrado</option>
+                            <option value="2">Empleado</option>
+                            <option value="3">Cliente</option>
+                        </select>
+                    </div>
+                    <div class="contenedorBotonesCRUD">
+                        <div class="botonesCRUD">
+                            <div class="flexColum">
+                                <button class="botonCRUDCorto botonActualizar">
+                                    Actualizar
+                                </button>
+                                <p style="text-align: center; margin-top: 1%; margin-bottom: 1%;">Cambiar Estado</p>
+                                <div class="flexRow">
+                                    <button class="botonCRUDCorto botonMostrar">
+                                    Habilitar
+                                    </button>
+                                    <button class="botonCRUDCorto botonNuevo">
+                                    Oculto
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mensajeError">Mensaje de Error</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('partials/_footer') %>

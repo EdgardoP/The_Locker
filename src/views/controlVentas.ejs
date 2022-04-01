@@ -1,0 +1,71 @@
+<%- include('partials/_headerMenuEmpleado') %>
+<% let fecha = 0 %> 
+<% function convert(str) {
+    var date = new Date(str),
+      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+      day = ("0" + date.getDate()).slice(-2);
+    return [date.getFullYear(), mnth, day].join("-");
+  } %> 
+    <div class="imagenFondo contenedorModuloEmpleado">
+        <div class="contenedorMenuSlider">
+            <%- include('partials/_slideBarMenu') %>
+        </div>
+        <div class="contenedorContenidoModuloEmpleado">
+            <div class="encabezadoControl">
+                <h3>
+                    Control Ventas
+                </h3>
+                <div class="flexRow" style="align-items: baseline;">
+                    <p style="margin-right: 8px;">Generar reporte:</p>
+                    <div class="flexColum">
+                        <select name="reporte" id="reporte">
+                            <option value="0">Seleccion</option>
+                        </select>
+                        <button class="botonReporte botonVerde">
+                            Generar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="separadorTablasControles">
+                <p>Nombre de Campos</p>
+                <p style="margin-left: 50%" ;>Ingresar</p>
+            </div>
+            <div class="contenedorCrud">
+                <div class="contenedorTablaVentas">
+                    <table class="tabla">
+                        <tr>
+                            <th>Ticket</th>
+                            <th>Fecha</th>
+                            <th>Producto</th>
+                            <th>Tarjeta</th>
+                            <th>No Tarjeta</th>
+                            <th>Cliente</th>
+                            <th>Direccion</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Total</th>
+                        </tr>
+                        <% if (data) { %>
+                            <% for( let index = 0; index < data.length; index++ ) { %>
+                                <% fecha = data[index].fechaVenta %> 
+                                <tr>
+                                    <td> <%= data[index].noTicket %>  </td>
+                                    <td> <%= convert(String(fecha)) %> </td>
+                                    <td> <%= data[index].nombreProducto %> </td>
+                                    <td> <%= data[index].nombreTarjeta %> </td>
+                                    <td> <%= data[index].noTarjeta %> </td>
+                                    <td> <%= data[index].nombreCompleto %> </td>
+                                    <td> <%= data[index].direcEnvio %> </td>
+                                    <td> <%= data[index].cantidadProducto %> </td>
+                                    <td> <%= data[index].precioProducto %> </td>
+                                    <td> L. <%= data[index].Total %> </td>
+                                </tr>
+                            <% } %>
+                        <% } %>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<%- include('partials/_footer') %>

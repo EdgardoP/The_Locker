@@ -6,7 +6,7 @@
         <div class="contenedorContenidoModuloEmpleado">
             <div class="encabezadoControl">
                 <h3>
-                    Control Usuarios
+                    Control Inventario
                 </h3>
                 <div class="flexRow" style="align-items: baseline;">
                     <p style="margin-right: 8px;">Generar reporte:</p>
@@ -30,22 +30,28 @@
                         <tr>
                             <th>Id</th>
                             <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Edad</th>
-                            <th>Sexo</th>
-                            <th>Email</th>
-                            <th>Tipo</th>
+                            <th>Proveedor</th>
+                            <th>Descripcion</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Imagen</th>
+                            <th>Clasificacion</th>
+                            <th>Talla</th>
+                            <th>EstadoCat</th>
                         </tr>
                         <% if (data) { %>
                             <% for( let index = 0; index < data.length; index++ ) { %>
                                 <tr>
-                                    <td> <%= data[index].idUsuario %>  </td>
-                                    <td> <%= data[index].nombreUsuario %> </td>
-                                    <td> <%= data[index].apellidoUsuario %> </td>
-                                    <td> <%= data[index].edadUsuario %> </td>
-                                    <td> <%= data[index].sexoUsuario %> </td>
-                                    <td> <%= data[index].emailUsuario %> </td>
-                                    <td> <%= data[index].tipoUsuario %> </td>
+                                    <td> <%= data[index].idProducto %>  </td>
+                                    <td> <%= data[index].nombreProducto %> </td>
+                                    <td> <%= data[index].fkIdProveedor %> </td>
+                                    <td> <%= data[index].descripcionProducto %> </td>
+                                    <td> <%= data[index].cantProducto %> </td>
+                                    <td> <%= data[index].precioProducto %> </td>
+                                    <td> <img style="width: 50px;" src="<%= data[index].imagenProducto %>" alt=""></td>
+                                    <td> <%= data[index].clasificacionProducto %> </td>
+                                    <td> <%= data[index].tallaProducto %> </td>
+                                    <td> <%= data[index].estadoCatalogo %> </td>
                                 </tr>
                             <% } %>
                         <% } %>
@@ -53,49 +59,47 @@
                 </div>
                 <div class="contenedorPanelBotones">
                     <div class="inputCRUD">
-                        <label for="idUsuario">Id:</label>
-                        <input type="text" name="idUsuario" id="idUsuario">
+                        <label for="idProducto">Id:</label>
+                        <input type="text" name="idProducto" id="idProducto">
                     </div>
                     <div class="inputCRUD">
-                        <label for="Nombre">Nombre</label>
-                        <input type="text" name="nombreUsuario" id="nombreUsuario">
+                        <label for="nombreProducto">Nombre:</label>
+                        <input type="text" name="nombreProducto" id="nombreProducto">
                     </div>
                     <div class="inputCRUD">
-                        <label for="apellidoUsuario">Apellido</label>
-                        <input type="text" name="apellidoUsuario" id="apellidoUsuario">
+                        <label for="descripcionProducto">Descripcion:</label>
+                        <input type="text" name="descripcionProducto" id="descripcionProducto">
                     </div>
                     <div class="inputCRUD">
-                        <label for="edadUsuario">Edad</label>
-                        <input type="number" name="edadUsuario" id="edadUsuario">
+                        <label for="cantProducto">Cantidad:</label>
+                        <input type="number" name="cantProducto" id="cantProducto">
                     </div>
                     <div class="inputCRUD">
-                        <label for="sexoUsuario">Sexo</label>
-                        <select name="sexoUsuario" id="sexoUsuario">
+                        <label for="precioProducto">Precio:</label>
+                        <input type="number" name="precioProducto" id="precioProducto">
+                    </div>
+                    <div class="inputCRUD">
+                        <label for="imagenProducto">Imagen:</label>
+                        <input type="text" name="imagenProducto" id="imagenProducto">
+                    </div>
+                    <div class="inputCRUD">
+                        <label for="clasificacionProducto">Clasificacion:</label>
+                        <input type="text" name="clasificacionProducto" id="clasificacionProducto">
+                    </div>
+                    <div class="inputCRUD">
+                        <label for="tallaProducto">Talla:</label>
+                        <input type="text" name="tallaProducto" id="tallaProducto">
+                    </div>
+                    <div class="inputCRUD">
+                        <label for="fkIdProveedor">Proveedor</label>
+                        <select name="fkIdProveedor" id="fkIdProveedor">
                             <option value="N">Seleccione</option>
-                            <option value="H">Hombre</option>
-                            <option value="M">Mujer</option>
                         </select>
                     </div>
                     <div class="inputCRUD">
-                        <label for="emailUsuario">Email</label>
-                        <input type="text" name="emailUsuario" id="emailUsuario">
-                    </div>
-                    <div class="inputCRUD">
-                        <label for="tipoUsuario">Tipo</label>
-                        <select name="tipoUsuario" id="tipoUsuario">
-                            <option value="0">Seleccione</option>
-                            <option value="1">Administrado</option>
-                            <option value="2">Empleado</option>
-                            <option value="3">Cliente</option>
-                        </select>
-                    </div>
-                    <div class="inputCRUD">
-                        <label for="mostrarTipoUsuario">Mostrar</label>
-                        <select name="mostrarTipoUsuario" id="mostrarTipoUsuario">
-                            <option value="0">Seleccione</option>
-                            <option value="1">Administrado</option>
-                            <option value="2">Empleado</option>
-                            <option value="3">Cliente</option>
+                        <label for="estadoCatalogo">Estado</label>
+                        <select name="estadoCatalogo" id="estadoCatalogo">
+                            <option value="N">Seleccione</option>
                         </select>
                     </div>
                     <div class="contenedorBotonesCRUD">

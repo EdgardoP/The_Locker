@@ -842,23 +842,43 @@ input:focus {
     padding-bottom: 8px;
 }
 
+.contenedorTablaVentas {
+    background-color: #fff;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 100px;
+}
+
+.contenedorTablaVentas td {
+    width: 10%;
+    padding-bottom: 10px;
+    font-size: 18px;
+    background-color: rgba(136, 136, 136, 0.068);
+}
+
+.contenedorTablaVentas th {
+    border-bottom: rgba(0, 0, 0, 0.267) 1px solid;
+    padding-bottom: 8px;
+}
+
 .contenedorPanelBotones {
     background-color: var(--colorTres);
     width: 22%;
-    padding: 30px 10px 10px 10px;
+    padding: 30px 10px 40px 10px;
     font-size: 18px;
+    height: 100%;
     color: #fff;
-    height: 500px;
+    margin-bottom: 50px;
 }
 
 .contenedorPanelBotones input {
-    width: 75%;
+    width: 59%;
     background-color: #fff;
     border-radius: 10px;
 }
 
 .contenedorPanelBotones select {
-    width: 75%;
+    width: 59%;
     border-radius: 10px;
     background-color: #fff;
 }
@@ -879,7 +899,20 @@ input:focus {
     color: #fff;
     border-radius: 7px;
     border: none;
+    text-shadow: #000 1px 1px;
     box-shadow: rgba(0, 0, 0, 0.493) 2px 3px 10px;
+}
+
+.tarjetaCRUD {
+    width: 20%;
+    border-radius: 12px;
+    margin: 1.5%;
+    box-shadow: rgba(0, 0, 0, 0.301) 2px 3px 10px;
+    overflow: hidden;
+}
+
+.tarjetaCRUD img {
+    width: 100%;
 }
 
 .contenedorBotonesCRUD {
@@ -888,6 +921,44 @@ input:focus {
     justify-content: end;
 }
 
+.TarjetaCRUDContenido {
+    padding: 10px;
+}
+
 .botonesCRUD {
+    width: 70%;
+}
+
+.visible {
+    background-color: #2d791e70;
+}
+
+.oculto {
+    background-color: #fe292580;
+}
+
+.contenedorTarjetasControl {
+    background-color: #fff;
     width: 75%;
+    text-align: left;
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.botonMostrar {
+    background-color: #FE9227;
+}
+
+.botonNuevo {
+    background-color: #2D791E;
+}
+
+.botonActualizar {
+    background-color: #0080FF;
+}
+
+.botonEliminar {
+    background-color: #FE2725;
 }
