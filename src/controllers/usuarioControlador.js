@@ -1,4 +1,16 @@
+var LocalStorage = require('node-localstorage').LocalStorage;
+localStorage = new LocalStorage('/TheLocker');
 const controller = {};
+
+const bitacora = "INSERT INTO bitacora ( " +
+    "accionRealizada, " +
+    "moduloAfectado, " +
+    "fechaBitacora, " +
+    "fkEmailUsuario) " +
+    "VALUES ";
+const modulo = 'Usuario'
+let date = new Date();
+let fecha = date.toISOString().split('T')[0];
 
 controller.mostrar = (req, res) => {
     req.getConnection((err, conn) => {
@@ -35,8 +47,8 @@ controller.guardarCliente = (req, res) => {
 controller.guardar = (req, res) => {
     const data = req.body;
     console.log(req.body);
-    const { idUsuario, nombreUsuario, apellidoUsuario, edadUsuario, sexoUsuario, emailUsuario, password, tipoUsuario } = req.body;
-    if (!idUsuario || !nombreUsuario || !apellidoUsuario || !edadUsuario || !sexoUsuario || !emailUsuario || !password || !tipoUsuario) {
+    const { idUsuario, nombreUsuario, apellidoUsuario, edadUsuario, sexoUsuario, emailUsuario, contrasenia, tipoUsuario } = req.body;
+    if (!idUsuario || !nombreUsuario || !apellidoUsuario || !edadUsuario || !sexoUsuario || !emailUsuario || !contrasenia || !tipoUsuario) {
         res.send('Debes ingresar todos los datos');
     } else {
         req.getConnection((err, conn) => {
@@ -49,16 +61,26 @@ controller.guardar = (req, res) => {
                 }
             })
         })
+        req.getConnection((err, conn) => {
+            conn.query(`${bitacora} ('Guardar','${modulo}','${fecha}','${localStorage.getItem('correoUsuario')}')`, (err, usuario) => {
+                if (usuario) {
+                    console.log('Se guardo la bitacora')
+                } else {
+                    console.log(err);
+                    console.log('Error al guardar la bitacora');
+                }
+            })
+        })
     }
 }
 
 
 controller.actualizar = (req, res) => {
     const data = req.body;
-    const { idUsuario } = req.body;
-    console.log(idUsuario);
+    console.log(data);
+    const { emailUsuario } = req.body;
     req.getConnection((err, conn) => {
-        conn.query('UPDATE usuario set ? WHERE idUsuario = ? ', [data, idUsuario], (err, usuario) => {
+        conn.query('UPDATE usuario set ? WHERE emailUsuario = ? ', [data, emailUsuario], (err, usuario) => {
             if (usuario) {
                 res.send('Cambios realizados exitosamente');
             } else {
@@ -67,15 +89,40 @@ controller.actualizar = (req, res) => {
             }
         })
     })
+    req.getConnection((err, conn) => {
+        conn.query(`${bitacora} ('Actualizar','${modulo}','${fecha}','${localStorage.getItem('correoUsuario')}')`, (err, usuario) => {
+            if (usuario) {
+                console.log('Se guardo la bitacora')
+            } else {
+                console.log(err);
+                console.log('Error al guardar la bitacora');
+            }
+        })
+    })
 
 }
 
 controller.eliminar = (req, res) => {
-    const { idUsuario } = req.body;
-    console.log(idUsuario);
+    const { emailUsuario } = req.body;
+    console.log(emailUsuario);
     req.getConnection((err, conn) => {
-        conn.query('DELETE FROM usuario WHERE idUsuario = ?', [idUsuario], (err, usuario) => {
-            res.send('Cambios realizados exitosamente');
+        conn.query('DELETE FROM usuario WHERE emailUsuario = ?', [emailUsuario], (err, usuario) => {
+            if (usuario) {
+                res.send('Cambios realizados exitosamente');
+            } else {
+                console.log(err);
+                res.send('Ocurrio un error');
+            }
+        })
+    })
+    req.getConnection((err, conn) => {
+        conn.query(`${bitacora} ('Eliminar','${modulo}','${fecha}','${localStorage.getItem('correoUsuario')}')`, (err, usuario) => {
+            if (usuario) {
+                console.log('Se guardo la bitacora')
+            } else {
+                console.log(err);
+                console.log('Error al guardar la bitacora');
+            }
         })
     })
 }

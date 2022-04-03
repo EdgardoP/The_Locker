@@ -9,9 +9,9 @@ controller.paginaLogin = (req, res) => {
 
 controller.verificarLogin = (req, res) => {
     const { emailUsuario } = req.body;
-    const { password } = req.body;
+    const { contrasenia } = req.body;
     req.getConnection((err, conn) => {
-        conn.query('SELECT * FROM the_locker.usuario where emailUsuario = ? and password = ? ', [emailUsuario, password], (err, usuario) => {
+        conn.query('SELECT * FROM the_locker.usuario where emailUsuario = ? and contrasenia = ? ', [emailUsuario, contrasenia], (err, usuario) => {
             if (usuario.length === 0) {
                 res.send('No es encontro este usuario')
             } else {

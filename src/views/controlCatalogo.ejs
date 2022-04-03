@@ -27,27 +27,26 @@
             <div class="contenedorCrud">
                 <div class="contenedorTarjetasControl">
                 <% if (data) { %>
-                    <% console.log(data); %> 
                     <% for( let index = 0; index < data.length; index++ ) { %>
                         <% if (data[index].estadoCatalogo == 'Visible') { %>
-                            <div class="tarjetaCRUD visible">
+                            <div class="tarjetaCRUD visible tarjetaControlCatalogo">
                         <% } %>
                         <% if (data[index].estadoCatalogo == 'Oculto') { %>
-                            <div class="tarjetaCRUD oculto">
+                            <div class="tarjetaCRUD oculto tarjetaControlCatalogo">
                         <% } %>
                             <img src= <%= data[index].imagenProducto %>  alt="">
                             <div class="TarjetaCRUDContenido">
                                 <div class="inputCRUD">
                                     <p>Id:</p>
-                                    <p><%= data[index].idProducto %></p>
+                                    <p class="idProducto"><%= data[index].idProducto %></p>
                                 </div>
                                 <div class="inputCRUD">
                                     <p>Nombre:</p>
-                                    <p><%= data[index].nombreProducto %></p>
+                                    <p class="nombreProducto"><%= data[index].nombreProducto %></p>
                                 </div>
                                 <div class="inputCRUD">
                                     <p>Cantidad:</p>
-                                    <p> <%= data[index].cantProducto %> </p>
+                                    <p class="cantidadProducto"> <%= data[index].cantProducto %> </p>
                                 </div>
                                 <div class="inputCRUD">
                                     <p>Estado:</p>
@@ -59,39 +58,28 @@
                 <% } %>
                 </div>
                 <div class="contenedorPanelBotones">
+                    <form action="" method="post" id="formularioCatalogo">
                     <div class="inputCRUD">
-                        <label for="idUsuario">Id:</label>
-                        <input type="text" name="idUsuario" id="idUsuario">
+                        <label for="idProducto">Id:</label>
+                        <input type="text" name="idProducto" id="idProducto">
                     </div>
                     <div class="inputCRUD">
-                        <label for="Nombre">Nombre</label>
-                        <input type="text" name="nombreUsuario" id="nombreUsuario">
+                        <label for="nombreProducto">Nombre</label>
+                        <input type="text" name="nombreProducto" id="nombreProducto">
                     </div>
                     <div class="inputCRUD">
-                        <label for="apellidoUsuario">Apellido</label>
-                        <input type="text" name="apellidoUsuario" id="apellidoUsuario">
-                    </div>
-                    <div class="inputCRUD">
-                        <label for="mostrarTipoUsuario">Mostrar</label>
-                        <select name="mostrarTipoUsuario" id="mostrarTipoUsuario">
-                            <option value="0">Seleccione</option>
-                            <option value="1">Administrado</option>
-                            <option value="2">Empleado</option>
-                            <option value="3">Cliente</option>
-                        </select>
+                        <label for="cantProducto">Cantidad</label>
+                        <input type="text" name="cantProducto" id="cantProducto">
                     </div>
                     <div class="contenedorBotonesCRUD">
                         <div class="botonesCRUD">
                             <div class="flexColum">
-                                <button class="botonCRUDCorto botonActualizar">
-                                    Actualizar
-                                </button>
                                 <p style="text-align: center; margin-top: 1%; margin-bottom: 1%;">Cambiar Estado</p>
                                 <div class="flexRow">
-                                    <button class="botonCRUDCorto botonMostrar">
-                                    Habilitar
+                                    <button class="botonCRUDCorto botonMostrar" id="btnVisible">
+                                    Visible
                                     </button>
-                                    <button class="botonCRUDCorto botonNuevo">
+                                    <button class="botonCRUDCorto botonNuevo" id="btnOculto">
                                     Oculto
                                     </button>
                                 </div>
@@ -99,8 +87,10 @@
                         </div>
                     </div>
                     <p class="mensajeError">Mensaje de Error</p>
+                </form>
                 </div>
             </div>
         </div>
     </div>
+    <script src="/scripts/controlCatalogo.js"></script>
     <%- include('partials/_footer') %>

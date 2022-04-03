@@ -11,7 +11,7 @@ const showMenu = (toggleId, navbarId, bodyId) => {
             // ROTATE TOGGLE
             toggle.classList.toggle("rotate");
             // PADDING BODY
-            bodypadding.classList.toggle("expander");
+            // bodypadding.classList.toggle("expander");
         });
     }
 };

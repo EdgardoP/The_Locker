@@ -34,93 +34,102 @@
                             <th>Edad</th>
                             <th>Sexo</th>
                             <th>Email</th>
+                            <th>Password</th>
                             <th>Tipo</th>
                         </tr>
                         <% if (data) { %>
                             <% for( let index = 0; index < data.length; index++ ) { %>
-                                <tr>
-                                    <td> <%= data[index].idUsuario %>  </td>
-                                    <td> <%= data[index].nombreUsuario %> </td>
-                                    <td> <%= data[index].apellidoUsuario %> </td>
-                                    <td> <%= data[index].edadUsuario %> </td>
-                                    <td> <%= data[index].sexoUsuario %> </td>
-                                    <td> <%= data[index].emailUsuario %> </td>
-                                    <td> <%= data[index].tipoUsuario %> </td>
+                                <tr class="fila">
+                                    <td class="idUsuario"> <%= data[index].idUsuario %>  </td>
+                                    <td class="nombreUsuario"> <%= data[index].nombreUsuario %> </td>
+                                    <td class="apellidoUsuario"> <%= data[index].apellidoUsuario %> </td>
+                                    <td class="edadUsuario"> <%= data[index].edadUsuario %> </td>
+                                    <td class="sexoUsuario"> <%= data[index].sexoUsuario %> </td>
+                                    <td class="emailUsuario"> <%= data[index].emailUsuario %> </td>
+                                    <td class="password"> <%= data[index].contrasenia %> </td>
+                                    <td class="tipoUsuario"> <%= data[index].tipoUsuario %> </td>
                                 </tr>
                             <% } %>
                         <% } %>
                     </table>
                 </div>
                 <div class="contenedorPanelBotones">
-                    <div class="inputCRUD">
-                        <label for="idUsuario">Id:</label>
-                        <input type="text" name="idUsuario" id="idUsuario">
-                    </div>
-                    <div class="inputCRUD">
-                        <label for="Nombre">Nombre</label>
-                        <input type="text" name="nombreUsuario" id="nombreUsuario">
-                    </div>
-                    <div class="inputCRUD">
-                        <label for="apellidoUsuario">Apellido</label>
-                        <input type="text" name="apellidoUsuario" id="apellidoUsuario">
-                    </div>
-                    <div class="inputCRUD">
-                        <label for="edadUsuario">Edad</label>
-                        <input type="number" name="edadUsuario" id="edadUsuario">
-                    </div>
-                    <div class="inputCRUD">
-                        <label for="sexoUsuario">Sexo</label>
-                        <select name="sexoUsuario" id="sexoUsuario">
-                            <option value="N">Seleccione</option>
-                            <option value="H">Hombre</option>
-                            <option value="M">Mujer</option>
-                        </select>
-                    </div>
-                    <div class="inputCRUD">
-                        <label for="emailUsuario">Email</label>
-                        <input type="text" name="emailUsuario" id="emailUsuario">
-                    </div>
-                    <div class="inputCRUD">
-                        <label for="tipoUsuario">Tipo</label>
-                        <select name="tipoUsuario" id="tipoUsuario">
-                            <option value="0">Seleccione</option>
-                            <option value="1">Administrado</option>
-                            <option value="2">Empleado</option>
-                            <option value="3">Cliente</option>
-                        </select>
-                    </div>
-                    <div class="inputCRUD">
-                        <label for="mostrarTipoUsuario">Mostrar</label>
-                        <select name="mostrarTipoUsuario" id="mostrarTipoUsuario">
-                            <option value="0">Seleccione</option>
-                            <option value="1">Administrado</option>
-                            <option value="2">Empleado</option>
-                            <option value="3">Cliente</option>
-                        </select>
-                    </div>
-                    <div class="contenedorBotonesCRUD">
-                        <div class="botonesCRUD">
-                            <div class="flexColum">
-                                <div class="flexRow">
-                                    <button class="botonCRUDCorto botonMostrar">
-                                    Mostrar
+                    <form action="" method="post" id="formUsuarios">
+                        <div class="inputCRUD">
+                            <label for="idUsuario">Id:</label>
+                            <input type="text" name="idUsuario" id="idUsuario">
+                        </div>
+                        <div class="inputCRUD">
+                            <label for="Nombre">Nombre</label>
+                            <input type="text" name="nombreUsuario" id="nombreUsuario">
+                        </div>
+                        <div class="inputCRUD">
+                            <label for="apellidoUsuario">Apellido</label>
+                            <input type="text" name="apellidoUsuario" id="apellidoUsuario">
+                        </div>
+                        <div class="inputCRUD">
+                            <label for="edadUsuario">Edad</label>
+                            <input type="number" name="edadUsuario" id="edadUsuario">
+                        </div>
+                        <div class="inputCRUD">
+                            <label for="sexoUsuario">Sexo</label>
+                            <select id="sexoUsuario" name="sexoUsuario">
+                                <option value="Seleccione">Seleccione</option>
+                                <option value="H">H</option>
+                                <option value="M">M</option>
+                            </select>
+                        </div>
+                        <div class="inputCRUD">
+                            <label for="emailUsuario">Email</label>
+                            <input type="text" name="emailUsuario" id="emailUsuario">
+                        </div>
+                        <div class="inputCRUD">
+                            <label for="contrasenia">Contraseña:</label>
+                            <input type="text" name="contrasenia" id="contrasenia">
+                        </div>
+                        <div class="inputCRUD">
+                            <label for="tipoUsuario">Tipo</label>
+                            <select name="tipoUsuario" id="tipoUsuario">
+                                <option value="0">Seleccione</option>
+                                <option value="1">Administrador</option>
+                                <option value="2">Empleado</option>
+                                <option value="3">Cliente</option>
+                            </select>
+                        </div>
+                        <div class="inputCRUD">
+                            <label for="mostrarTipoUsuario">Mostrar</label>
+                            <select id="mostrarTipoUsuario">
+                                <option value=0>Seleccione</option>
+                                <option value=1>Administrado</option>
+                                <option value=2>Empleado</option>
+                                <option value=3>Cliente</option>
+                            </select>
+                        </div>
+                        <div class="contenedorBotonesCRUD">
+                            <div class="botonesCRUD">
+                                <div class="flexColum">
+                                    <div class="flexRow">
+                                        <button class="botonCRUDCorto botonMostrar" id="btnMostrar">
+                                        Mostrar
+                                        </button>
+                                        <button class="botonCRUDCorto botonNuevo" id="btnNuevoUsuario">
+                                        Nuevo
+                                        </button>
+                                    </div>
+                                    <button class="botonCRUDCorto botonActualizar" id="btnActualizarUsuario">
+                                        Actualizar
                                     </button>
-                                    <button class="botonCRUDCorto botonNuevo">
-                                    Nuevo
+                                    <button id="btnEliminarUsuario" type="submit" class="botonCRUDCorto botonEliminar">
+                                        Eliminar
                                     </button>
                                 </div>
-                                <button class="botonCRUDCorto botonActualizar">
-                                    Actualizar
-                                </button>
-                                <button class="botonCRUDCorto botonEliminar">
-                                    Eliminar
-                                </button>
                             </div>
                         </div>
-                    </div>
-                    <p class="mensajeError">Mensaje de Error</p>
+                        <p class="mensajeError">Mensaje de Error</p>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    <script src="/scripts/controlUsuarios.js"></script>
 <%- include('partials/_footer') %>

@@ -41,23 +41,48 @@
                         </tr>
                         <% if (data) { %>
                             <% for( let index = 0; index < data.length; index++ ) { %>
-                                <tr>
-                                    <td> <%= data[index].idProducto %>  </td>
-                                    <td> <%= data[index].nombreProducto %> </td>
-                                    <td> <%= data[index].fkIdProveedor %> </td>
-                                    <td> <%= data[index].descripcionProducto %> </td>
-                                    <td> <%= data[index].cantProducto %> </td>
-                                    <td> <%= data[index].precioProducto %> </td>
-                                    <td> <img style="width: 50px;" src="<%= data[index].imagenProducto %>" alt=""></td>
-                                    <td> <%= data[index].clasificacionProducto %> </td>
-                                    <td> <%= data[index].tallaProducto %> </td>
-                                    <td> <%= data[index].estadoCatalogo %> </td>
+                                <tr class="fila">
+                                    <td class="idProducto">
+                                        <%= data[index].idProducto %>
+                                    </td>
+                                    <td class="nombreProducto">
+                                        <%= data[index].nombreProducto %>
+                                    </td>
+                                    <% if (dataLista) { %>
+                                        <% for( let index2 = 0; index2 < dataLista.length; index2++ ) { %>
+                                            <% if (dataLista[index2].nombreProveedor == data[index].nombreProveedor) { %>
+                                                <td class="proveedor" id="<%= dataLista[index2].idProveedor %>">
+                                                    <%= data[index].nombreProveedor %>
+                                                </td>
+                                            <% } %>
+                                        <% } %>
+                                    <% } %>
+                                    <td class="descripcionProducto">
+                                        <%= data[index].descripcionProducto %>
+                                    </td>
+                                    <td class="cantProducto">
+                                        <%= data[index].cantProducto %>
+                                    </td>
+                                    <td class="precioProducto">
+                                        <%= data[index].precioProducto %>
+                                    </td>
+                                    <td> <img class="imagenProducto" style="width: 50px;" src="<%= data[index].imagenProducto %>" alt=""></td>
+                                    <td class="clasificacionProducto">
+                                        <%= data[index].clasificacionProducto %>
+                                    </td>
+                                    <td class="tallaProducto">
+                                        <%= data[index].tallaProducto %>
+                                    </td>
+                                    <td class="estadoCatalogo">
+                                        <%= data[index].estadoCatalogo %>
+                                    </td>
                                 </tr>
+                                <% } %>
                             <% } %>
-                        <% } %>
                     </table>
                 </div>
                 <div class="contenedorPanelBotones">
+                    <form action="" method="post" id="formularioInventario">
                     <div class="inputCRUD">
                         <label for="idProducto">Id:</label>
                         <input type="text" name="idProducto" id="idProducto">
@@ -83,48 +108,66 @@
                         <input type="text" name="imagenProducto" id="imagenProducto">
                     </div>
                     <div class="inputCRUD">
-                        <label for="clasificacionProducto">Clasificacion:</label>
-                        <input type="text" name="clasificacionProducto" id="clasificacionProducto">
-                    </div>
-                    <div class="inputCRUD">
-                        <label for="tallaProducto">Talla:</label>
-                        <input type="text" name="tallaProducto" id="tallaProducto">
-                    </div>
-                    <div class="inputCRUD">
-                        <label for="fkIdProveedor">Proveedor</label>
-                        <select name="fkIdProveedor" id="fkIdProveedor">
+                        <label for="clasificacionProducto">Clasificacion</label>
+                        <select name="clasificacionProducto" id="clasificacionProducto">
                             <option value="N">Seleccione</option>
+                            <option value="Hombre">Hombre</option>
+                            <option value="Mujer">Mujer</option>
+                            
+                        </select>
+                    </div>
+                    <div class="inputCRUD">
+                        <label for="tallaProducto">Talla</label>
+                        <select name="tallaProducto" id="tallaProducto">
+                            <option value="N">Seleccione</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
                         </select>
                     </div>
                     <div class="inputCRUD">
                         <label for="estadoCatalogo">Estado</label>
                         <select name="estadoCatalogo" id="estadoCatalogo">
                             <option value="N">Seleccione</option>
+                            <option value="Visible">Visible</option>
+                            <option value="Oculto">Oculto</option>
                         </select>
                     </div>
+                    <% if (dataLista) { %> 
+                    <div class="inputCRUD">
+                        <label for="fkIdProveedor">Proveedor</label>
+                        <select name="fkidProveedor" id="proveedor">
+                            <option value="N">Seleccione</option>
+                            <% for( let index = 0; index < dataLista.length; index++ ) { %>
+                            <option value="<%= (dataLista[index].idProveedor).trim() %>" id="<%= dataLista[index].idProveedor %>"><%= dataLista[index].nombreProveedor %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <% } %>
                     <div class="contenedorBotonesCRUD">
                         <div class="botonesCRUD">
                             <div class="flexColum">
-                                <div class="flexRow">
-                                    <button class="botonCRUDCorto botonMostrar">
-                                    Mostrar
-                                    </button>
-                                    <button class="botonCRUDCorto botonNuevo">
+                                <button class="botonCRUDCorto botonMostrar" id="btnNuevoProveedor">
+                                    Nuevo Proveedor
+                                </button>
+                                <button class="botonCRUDCorto botonNuevo" id="btnNuevoProducto">
                                     Nuevo
-                                    </button>
-                                </div>
-                                <button class="botonCRUDCorto botonActualizar">
+                                </button>
+                                <button class="botonCRUDCorto botonActualizar" id = "btnActualizarProducto">
                                     Actualizar
                                 </button>
-                                <button class="botonCRUDCorto botonEliminar">
+                                <button class="botonCRUDCorto botonEliminar" id="btnEliminarProducto">
                                     Eliminar
                                 </button>
                             </div>
                         </div>
                     </div>
                     <p class="mensajeError">Mensaje de Error</p>
+                </form>
                 </div>
             </div>
         </div>
     </div>
+    <script src="/scripts/controlInventario.js"></script>
 <%- include('partials/_footer') %>

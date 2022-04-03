@@ -831,7 +831,7 @@ input:focus {
 }
 
 .contenedorTabla td {
-    width: 10%;
+    width: 5%;
     padding-bottom: 10px;
     font-size: 18px;
     background-color: rgba(136, 136, 136, 0.068);
@@ -961,4 +961,13 @@ input:focus {
 
 .botonEliminar {
     background-color: #FE2725;
+}
+
+.fila {
+    transition: 0.3s;
+}
+
+.fila:hover {
+    background-color: #F0F0F0;
+    cursor: pointer;
 }

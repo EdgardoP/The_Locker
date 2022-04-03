@@ -1,4 +1,15 @@
+var LocalStorage = require('node-localstorage').LocalStorage;
+localStorage = new LocalStorage('/TheLocker');
 const controller = {}
+const bitacora = "INSERT INTO bitacora ( " +
+    "accionRealizada, " +
+    "moduloAfectado, " +
+    "fechaBitacora, " +
+    "fkEmailUsuario) " +
+    "VALUES ";
+const modulo = 'Producto'
+let date = new Date();
+let fecha = date.toISOString().split('T')[0]
 
 controller.guardarProducto = (req, res) => {
     const data = req.body;
@@ -7,6 +18,16 @@ controller.guardarProducto = (req, res) => {
     if (!nombreProducto, !fkIdProveedor, !descripcionProducto, !cantProducto, !precioProducto, !imagenProducto, !clasificacionProducto, !tallaProducto, !estadoCatalogo) {
         res.send('Debes ingresar todos los datos')
     } else {
+        req.getConnection((err, conn) => {
+            conn.query(`${bitacora} ('Guardar','${modulo}','${fecha}','${localStorage.getItem('correoUsuario')}')`, (err, producto) => {
+                if (producto) {
+                    console.log('Se guardo la bitacora')
+                } else {
+                    console.log(err);
+                    console.log('Error al guardar la bitacora');
+                }
+            })
+        })
         req.getConnection((err, conn) => {
             conn.query('INSERT INTO producto set ?', [data], (err, producto) => {
                 if (producto) {
@@ -32,6 +53,7 @@ controller.listarProductos = (req, res) => {
 
 controller.actualizarProducto = (req, res) => {
     const data = req.body;
+    console.log(data);
     const { idProducto } = req.body;
     console.log(idProducto);
     req.getConnection((err, conn) => {
@@ -41,6 +63,16 @@ controller.actualizarProducto = (req, res) => {
             } else {
                 res.send("Ocurrio un error al tratar de actualizar")
                 console.log(err);
+            }
+        })
+    })
+    req.getConnection((err, conn) => {
+        conn.query(`${bitacora} ('Actualizar','${modulo}','${fecha}','${localStorage.getItem('correoUsuario')}')`, (err, producto) => {
+            if (producto) {
+                console.log('Se guardo la bitacora')
+            } else {
+                console.log(err);
+                console.log('Error al guardar la bitacora');
             }
         })
     })
@@ -55,6 +87,18 @@ controller.eliminarProducto = (req, res) => {
             res.send('Cambios realizados exitosamente');
         })
     })
+
+    req.getConnection((err, conn) => {
+        conn.query(`${bitacora} ('Eliminar','${modulo}','${fecha}','${localStorage.getItem('correoUsuario')}')`, (err, producto) => {
+            if (producto) {
+                console.log('Se guardo la bitacora')
+            } else {
+                console.log(err);
+                console.log('Error al guardar la bitacora');
+            }
+        })
+    })
+
 }
 
 controller.mostrarCatalogoClientes = (req, res) => {
@@ -82,6 +126,34 @@ controller.mostrarCatalogoClientes = (req, res) => {
                 }
             })
         }
+    })
+}
+
+controller.cambiarEstado = (req, res) => {
+    const estado = req.params;
+    const { idProducto } = req.body;
+    if (estado.parametro == "Visible") {
+        req.getConnection((err, conn) => {
+            conn.query(`UPDATE the_locker.producto SET estadoCatalogo = 'Visible' WHERE idProducto = ? `, [idProducto], (err, producto) => {
+                res.redirect('/thelocker/dashboard/controlCatalogo')
+            })
+        })
+    } else {
+        req.getConnection((err, conn) => {
+            conn.query(`UPDATE the_locker.producto SET estadoCatalogo = 'Oculto' WHERE idProducto = ? `, [idProducto], (err, producto) => {
+                res.redirect('/thelocker/dashboard/controlCatalogo')
+            })
+        })
+    }
+    req.getConnection((err, conn) => {
+        conn.query(`${bitacora} ('Cambio Estado','${modulo}','${fecha}','${localStorage.getItem('correoUsuario')}')`, (err, producto) => {
+            if (producto) {
+                console.log('Se guardo la bitacora')
+            } else {
+                console.log(err);
+                console.log('Error al guardar la bitacora');
+            }
+        })
     })
 }
 module.exports = controller;
