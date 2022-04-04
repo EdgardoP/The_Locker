@@ -13,7 +13,7 @@ controller.verificarLogin = (req, res) => {
     req.getConnection((err, conn) => {
         conn.query('SELECT * FROM the_locker.usuario where emailUsuario = ? and contrasenia = ? ', [emailUsuario, contrasenia], (err, usuario) => {
             if (usuario.length === 0) {
-                res.send('No es encontro este usuario')
+                res.redirect('/thelocker/login')
             } else {
                 if (typeof localStorage === "undefined" || localStorage === null) {
                     var LocalStorage = require('node-localstorage').LocalStorage;

@@ -23,13 +23,14 @@ controller.mostrar = (req, res) => {
 controller.guardarCliente = (req, res) => {
 
     const data = req.body;
+    console.log(data);
     const idTipo = {
         idUsuario: Math.floor(Math.random() * (5000 - 1) + 1),
         tipoUsuario: 3
     }
     const agg = Object.assign(data, idTipo)
-    const { nombreUsuario, apellidoUsuario, edadUsuario, sexoUsuario, emailUsuario, password } = req.body;
-    if (!nombreUsuario || !apellidoUsuario || !edadUsuario || !sexoUsuario || !emailUsuario || !password) {
+    const { nombreUsuario, apellidoUsuario, edadUsuario, sexoUsuario, emailUsuario, contrasenia } = req.body;
+    if (!nombreUsuario || !apellidoUsuario || !edadUsuario || !sexoUsuario || !emailUsuario || !contrasenia) {
         res.send('Debes ingresar todos los datos');
     } else {
         req.getConnection((err, conn) => {
@@ -54,7 +55,7 @@ controller.guardar = (req, res) => {
         req.getConnection((err, conn) => {
             conn.query('INSERT INTO usuario set ?', [data], (err, usuario) => {
                 if (usuario) {
-                    res.send('Datos ingresados correctamente');
+                    res.redirect('/thelocker/dashboard/controlUsuarios');
                 } else {
                     console.log(err);
                     res.send("Ocurrio un error al ingresar los datos")
@@ -82,7 +83,7 @@ controller.actualizar = (req, res) => {
     req.getConnection((err, conn) => {
         conn.query('UPDATE usuario set ? WHERE emailUsuario = ? ', [data, emailUsuario], (err, usuario) => {
             if (usuario) {
-                res.send('Cambios realizados exitosamente');
+                res.redirect('/thelocker/dashboard/controlUsuarios');
             } else {
                 res.send("Ocurrio un error al tratar de actualizar")
                 console.log(err);
@@ -108,7 +109,7 @@ controller.eliminar = (req, res) => {
     req.getConnection((err, conn) => {
         conn.query('DELETE FROM usuario WHERE emailUsuario = ?', [emailUsuario], (err, usuario) => {
             if (usuario) {
-                res.send('Cambios realizados exitosamente');
+                res.redirect('/thelocker/dashboard/controlUsuarios');
             } else {
                 console.log(err);
                 res.send('Ocurrio un error');

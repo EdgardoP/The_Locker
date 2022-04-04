@@ -1,9 +1,9 @@
-<%- include('partials/_header.ejs') %>
+<%- include('partials/_header.ejs') %> 
 <% let acumulador = 0 %> 
 <% let sumCantidades = 0 %> 
 <% let fkIdCarrito = [] %> 
 <% if (data.length > 0) { %>
-    <div class="imagenFondo contenedorGeneralCarrito flexRow">
+    <div class="imagenFondo contenedorGeneralCarrito flexRow" style="padding-bottom: 220px;">
         <div class="contenedorListaCarrito">
             <% for( let index = 0; index < data.length; index++ ) { %>
                 <div class="flexRow tarjetaListaCarrito">
@@ -25,8 +25,10 @@
                                 <% let resultado = data[index].precioProducto * data[index].cantidadProducto %> 
                                 <% sumCantidades += data[index].cantidadProducto %> 
                                 <% acumulador += resultado %> 
-                                <button class="botonCarrito">
+                                <button class="botonCarrito botonEliminar" style="color: #FFF; ">
+                                    <a href="/thelocker/carrito/eliminar/ <%= data[index].idCarrito %> " style="text-decoration: none; color: #FFF;">
                                     Eliminar
+                                </a>
                                 </button>
                             </div>
                         </div>
@@ -53,7 +55,11 @@
             </div>
         </div>
     </div>
-<% } %>
+<% } else { %> 
+    <div class="imagenFondo contenedorGeneralCarrito flexRow" style="height: 600px; justify-content: center;">
+        <h2 style= " margin-top: 10%; text-align: center; background-color: #FFF; padding: 20px; height: 50px; border-radius: 10px;">Parece que aun no has añadido nada a tu carrito</h2>
+    </div>
+    <% } %> 
     <div id="myModalCarrito" class="modalCarrito">
         <div class="modalCarrito-contenido">
                 <div class="modalCarrito-header">
@@ -63,7 +69,7 @@
             <div class="modalCarrito-body flexRow">
                 <div class="modalCarritoIzq">
                     <div class="modalTarjetasCredito flexColum">
-                        <form action="/thelocker/carrito/ejecutarPago/<%= fkIdCarrito %> " method="post" class="flexColum">
+                        <form action="/thelocker/carrito/ejecutarPago/<%= fkIdCarrito %> " method="post" class="flexColum" id="formulario">
                             <label for="nombreCompleto">Nombre Completo</label>
                             <input type="text" name="nombreCompleto" id="nombreCompleto">
                             <label for="direcEnvio">Direccion de Envio</label>
@@ -106,7 +112,8 @@
                             </div>
                             <label for="codigoSeguridad">Codigo de Seguridad</label>
                             <input type="text" name="codigoSeguridad" id="codigoSeguridad" style="width: 40px;">
-                            <button class="botonCarrito botonAzul" type="submit">Proceder a Pago</button>
+                            <p class="mensajeError" id="mensajeError">Parece que hubo un problema al intentar registrarte</p>
+                            <button class="botonCarrito botonAzul" type="submit" id="btnPago">Proceder a Pago</button>
                         </form>
                     </div>
                 </div>
@@ -123,4 +130,5 @@
         </div>
   </div>
   <script src="/scripts/index.js"></script>
+  <script src="/scripts/valFacturarPago.js"></script>
 <%- include('partials/_footer.ejs') %>

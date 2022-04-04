@@ -4,7 +4,7 @@
             <%- include('partials/_slideBarMenu') %>
         </div>
         <div class="contenedorContenidoModuloEmpleado">
-            <div class="encabezadoControl">
+            <div class="encabezadoControl" id="encabezado">
                 <h3>
                     Control Usuarios
                 </h3>
@@ -96,26 +96,12 @@
                                 <option value="3">Cliente</option>
                             </select>
                         </div>
-                        <div class="inputCRUD">
-                            <label for="mostrarTipoUsuario">Mostrar</label>
-                            <select id="mostrarTipoUsuario">
-                                <option value=0>Seleccione</option>
-                                <option value=1>Administrado</option>
-                                <option value=2>Empleado</option>
-                                <option value=3>Cliente</option>
-                            </select>
-                        </div>
                         <div class="contenedorBotonesCRUD">
                             <div class="botonesCRUD">
                                 <div class="flexColum">
-                                    <div class="flexRow">
-                                        <button class="botonCRUDCorto botonMostrar" id="btnMostrar">
-                                        Mostrar
-                                        </button>
                                         <button class="botonCRUDCorto botonNuevo" id="btnNuevoUsuario">
                                         Nuevo
                                         </button>
-                                    </div>
                                     <button class="botonCRUDCorto botonActualizar" id="btnActualizarUsuario">
                                         Actualizar
                                     </button>
@@ -125,11 +111,12 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="mensajeError">Mensaje de Error</p>
+                        <p class="mensajeError" id="mensajeError">Parece que hubo un problema al intentar registrarte</p>
                     </form>
                 </div>
             </div>
         </div>
     </div>
     <script src="/scripts/controlUsuarios.js"></script>
+    <script src="/scripts/valControlUsuarios.js"></script>
 <%- include('partials/_footer') %>

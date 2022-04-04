@@ -14,6 +14,7 @@ const routerLogin = require('./routes/login');
 const routerProducto = require('./routes/productos');
 const routerCarrito = require('./routes/carrito');
 const routerDashboard = require('./routes/dashboard')
+const routerReportes = require('./routes/reportes')
     //settings
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'ejs');
@@ -39,6 +40,7 @@ app.use('/thelocker/login', routerLogin);
 app.use('/thelocker/producto/', routerProducto);
 app.use('/thelocker/carrito/', routerCarrito);
 app.use('/thelocker/dashboard/', routerDashboard);
+app.use('/thelocker/reportes/',routerReportes);
 //archivos estaticos
 app.use(express.static(path.join(__dirname, 'public')))
 

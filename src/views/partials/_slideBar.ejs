@@ -13,7 +13,20 @@
             <span class="material-icons iconoBlanco">chevron_right</span>
         </div>
         <!-- Lista de compras -->
-        <ul class="nav-list">
+        <ul class="nav-list" style="overflow: hidden;">
+            <% if (dataLista) { %>
+                <% console.log(dataLista[0]); %> 
+                <% for( let index = 0; index < dataLista.length; index++ ) { %>
+                    <div class="flexRow" style="align-items: center; width: 100%; justify-content: space-between; background-color: #04293A; color: #fff; font-weight: 600; padding: 6px; border-radius: 10px; margin-top: 10px; height: 40px;">
+                        <span class="material-icons" style="color: #fff;margin-left: 10px;">
+                            checkroom
+                        </span>
+                        <p style="padding-left: 14px;"> <%= dataLista[index].nombreProducto %>  </p>
+                        <p>X</p>
+                        <p style="padding-right: 10px;"> <%= dataLista[index].cantidadProducto %>  </p>
+                    </div>
+                <% } %>
+            <% } %> 
         </ul>
     </div>
 </div>

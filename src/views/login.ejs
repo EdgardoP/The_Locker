@@ -2,7 +2,7 @@
     <div class="contenedorCentrado imagenFondo">
         <div class="contenedorPrincipalLogin" style="flex-direction: row-reverse;">
             <div class="loginIzq" style=" height: 80%; width: 24%;">
-                <form action="/thelocker/login/verificarUsuario" method="post">
+                <form action="/thelocker/login/verificarUsuario" method="post" id="formulario">
                     <h2>Ingresa tus datos</h2>
                     <div>
                     </div>
@@ -10,14 +10,14 @@
                         <label>Email:</label>
                         <input class="cajaTexto" id="emailUsuario" name="emailUsuario" type="text" maxlength="50" minlength="2">
                         <label>Contraseña:</label>
-                        <input id="contrasenia" name="contrasenia" type="text" maxlength="50" minlength="2">
+                        <input id="contrasenia" name="contrasenia" type="password" maxlength="50" minlength="2">
                     </div>
-                    <p class="mensajeError">Parece que hubo un problema al intentar registrarte</p>
+                    <p class="mensajeError" id="mensajeError">Parece que hubo un problema al intentar registrarte</p>
                     <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                        <button class="boton">
+                        <button class="boton" style="background-color: #444444; color: #fff;">
                             Olvide mi contraseña
                         </button>
-                        <button class="boton">
+                        <button class="boton" style="background-color: #04293B; color: #fff;" id="btnIniciarSesion">
                             iniciar Sesion
                         </button>
                     </div>
@@ -30,11 +30,14 @@
                 </div>
                 <div>
                     <p style="font-weight: 100;">Aun no tienes cuenta</p>
-                    <button class="boton" type="submit">
-                    Registrate
+                    <button class="boton" style="background-color: #04293B;">
+                        <a href="/thelocker/registro" style="text-decoration: none; color: #fff;">
+                            Registrate
+                        </a>
                 </button>
                 </div>
             </div>
         </div>
     </div>
+    <script src="/scripts/valLogin.js"></script>
 <%- include('partials/_footer.ejs') %>

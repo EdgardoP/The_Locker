@@ -26,7 +26,7 @@ controller.aggCarrito = (req, res) => {
     req.getConnection((err, conn) => {
         conn.query('INSERT INTO carrito set ?', [data], (err, carrito) => {
             if (carrito) {
-                res.redirect('/thelocker/index')
+                res.redirect(`/thelocker/producto/catalogo/${localStorage.getItem('PaginaActual')}`)
             } else {
                 console.log(err);
                 res.send('Ocurrio un problema al ingresar al carrito')
@@ -36,6 +36,7 @@ controller.aggCarrito = (req, res) => {
 }
 
 controller.carritoPersonal = (req, res) => {
+    localStorage.setItem('PaginaActual', 'carrito/lista-de-compras')
     const query = 'select ' +
         'idCarrito, ' +
         'imagenProducto, ' +
@@ -91,16 +92,33 @@ controller.pagarCarrito = (req, res) => {
         valores = `('${noTicket}', '${id[index]}', '${date.toISOString().split('T')[0]}', '${nombreTarjeta}', '${noTarjeta}', '${nombreCompleto}', '${direcEnvio}'),`
         query = query.concat(valores)
     }
+    console.log(valores);
     req.getConnection((err, conn) => {
         conn.query(`${query.substring(0, query.length - 1)}`, (err, venta) => {
             if (venta) {
                 conn.query(`UPDATE carrito SET estadoCarrito = 'pagado' WHERE emailUsuario = '${localStorage.getItem('correoUsuario')}'`, (err, cambio) => {
                     if (cambio) {
-                        res.redirect('/thelocker/index')
+                        res.redirect('/thelocker/carrito/lista-de-compras')
                     } else {
+                        console.log(err);
                         res.send('Ocurrio un error al actualizar los valores')
                     }
                 })
+            } else {
+                console.log(err);
+                res.send('Parece que ha ocurrido un error');
+            }
+        })
+    })
+}
+
+controller.eliminarCarrito = (req, res) => {
+    const { id } = req.params
+    console.log(id);
+    req.getConnection((err, conn) => {
+        conn.query(`DELETE FROM the_locker.carrito WHERE (idcarrito = '${id}');`, (err, carrito) => {
+            if (carrito) {
+                res.redirect('/thelocker/carrito/lista-de-compras')
             } else {
                 res.send('Parece que ha ocurrido un error');
             }

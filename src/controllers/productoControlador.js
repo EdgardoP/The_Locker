@@ -103,12 +103,34 @@ controller.eliminarProducto = (req, res) => {
 
 controller.mostrarCatalogoClientes = (req, res) => {
     var clasificacion = req.params
+    localStorage.setItem('PaginaActual', clasificacion.id)
+    let lista = null;
+    let query = `SELECT nombreProducto, cantidadProducto FROM the_locker.carrito ` +
+        `inner join ` +
+        `producto on fkIdProducto = ` +
+        `idProducto where emailUsuario = ` +
+        `'${localStorage.getItem('correoUsuario')}' ` +
+        `and estadoCarrito = 'reservado'; `; +
+
+    req.getConnection((err, conn) => {
+        conn.query(`${query}`, (err, listaCarrito) => {
+            if (listaCarrito) {
+                lista = listaCarrito
+                console.log('Se guardo la lista')
+            } else {
+                console.log(err);
+                console.log('Error al cargar la lista')
+            }
+        })
+    })
+
     req.getConnection((err, conn) => {
         if (clasificacion.id == 'Explorar') {
             conn.query('SELECT * FROM the_locker.producto;', (err, producto) => {
                 if (producto) {
                     res.render('catalogo', {
                         data: producto,
+                        dataLista: lista
                     })
                 } else {
                     console.log('Ocurrio un error al tratar de cargar el catalogo');
@@ -120,6 +142,7 @@ controller.mostrarCatalogoClientes = (req, res) => {
                 if (producto) {
                     res.render('catalogo', {
                         data: producto,
+                        dataLista: lista
                     })
                 } else {
                     console.log('Ocurrio un error al tratar de cargar el catalogo');

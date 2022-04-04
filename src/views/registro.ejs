@@ -2,7 +2,7 @@
     <div class="contenedorCentrado imagenFondo">
         <div class="contenedorPrincipalLogin">
             <div class="loginIzq">
-                <form action="/thelocker/usuario/guardarCliente" name="registroF" method="post">
+                <form action="/thelocker/usuario/guardarCliente" name="registroF" method="post" id="formulario">
                     <h2>Ingresa tus datos</h2>
                     <div>
                         <div class="parInputs">
@@ -36,10 +36,10 @@
                         <label>Email:</label>
                         <input class="cajaTexto" id="emailUsuario" name="emailUsuario" type="text" maxlength="50" minlength="2">
                         <label>Contraseña:</label>
-                        <input id="password" name="password" type="text" maxlength="15" minlength="2">
+                        <input id="contrasenia" name="contrasenia" type="password" maxlength="15" minlength="2">
                     </div>
-                    <p class="mensajeError">Parece que hubo un problema al intentar registrarte</p>
-                    <button class="boton" type="submit" onclick="validarFormulario()">
+                    <p class="mensajeError" id="mensajeError">Parece que hubo un problema al intentar registrarte</p>
+                    <button class="boton" type="submit"  id="btnregistrarse" style="background-color:#04293B ; color: #fff;">
                         Registrarse
                     </button>
                 </form>
@@ -51,12 +51,14 @@
                 </div>
                 <div>
                     <p>¿Ya tienes una cuenta?</p>
-                    <button class="boton">
-                    Iniciar Sesion
+                    <button class="boton" style="background-color: #04293B;">
+                        <a href="/thelocker/login" style="text-decoration: none; color: #fff ;">
+                            Iniciar Sesion
+                        </a>
                 </button>
                 </div>
             </div>
         </div>
-        <script src="/scripts/validaciones.js"></script>
     </div>
-    <%- include('partials/_footer.ejs') %>
+    <script src="/scripts/valRegistro.js"></script>
+<%- include('partials/_footer.ejs') %>
