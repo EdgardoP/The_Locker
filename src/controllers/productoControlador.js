@@ -31,7 +31,7 @@ controller.guardarProducto = (req, res) => {
         req.getConnection((err, conn) => {
             conn.query('INSERT INTO producto set ?', [data], (err, producto) => {
                 if (producto) {
-                    res.send('Datos ingresados exitosamente')
+                    res.redirect('/thelocker/dashboard/controlInventario')
                 } else {
                     res.send('Ocurrio un error al ingresar los datos')
                     console.log(err);
@@ -59,7 +59,7 @@ controller.actualizarProducto = (req, res) => {
     req.getConnection((err, conn) => {
         conn.query('UPDATE producto set ? WHERE idProducto = ? ', [data, idProducto], (err, producto) => {
             if (producto) {
-                res.send('Cambios realizados exitosamente');
+                res.redirect('/thelocker/dashboard/controlInventario');
             } else {
                 res.send("Ocurrio un error al tratar de actualizar")
                 console.log(err);
@@ -84,7 +84,7 @@ controller.eliminarProducto = (req, res) => {
     console.log(idProducto);
     req.getConnection((err, conn) => {
         conn.query('DELETE FROM producto WHERE idProducto = ?', [idProducto], (err, Producto) => {
-            res.send('Cambios realizados exitosamente');
+            res.redirect('/thelocker/dashboard/controlInventario');
         })
     })
 
